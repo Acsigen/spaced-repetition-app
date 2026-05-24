@@ -1,0 +1,28 @@
+services:
+  spanish-srs-test:
+    build:
+      context: .
+      target: test
+    environment:
+      KV_PATH: /tmp/spanish-srs-test.kv
+    command: ["deno", "task", "verify"]
+
+  spanish-srs:
+    image: "acsigen/spaced-repetition-app:latest"
+    build:
+      context: .
+      target: runtime
+    depends_on:
+      spanish-srs-test:
+        condition: service_completed_successfully
+    restart: unless-stopped
+    environment:
+      KV_PATH: /data/spanish-srs.kv
+      PUBLIC_ORIGIN: https://spanish.example.com
+    volumes:
+      - spanish-srs-data:/data
+    ports:
+      - "127.0.0.1:8000:8000"
+
+volumes:
+  spanish-srs-data:

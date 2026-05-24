@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#27504d" />
+  <path
+    d="M96 146c0-24 19-43 43-43h234c24 0 43 19 43 43v220c0 24-19 43-43 43H139c-24 0-43-19-43-43z"
+    fill="#f5f2e8"
+  />
+  <path d="M133 154c0-8 6-14 14-14h218c8 0 14 6 14 14v41H133z" fill="#c63b2e" />
+  <path
+    d="M133 317h246v43c0 8-6 14-14 14H147c-8 0-14-6-14-14z"
+    fill="#f0b429"
+  />
+  <text
+    x="256"
+    y="286"
+    text-anchor="middle"
+    font-family="Arial, sans-serif"
+    font-size="116"
+    font-weight="700"
+    fill="#27504d"
+  >ES</text>
+</svg>

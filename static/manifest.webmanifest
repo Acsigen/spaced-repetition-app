@@ -1,0 +1,24 @@
+{
+  "name": "Vocabular spaniol",
+  "short_name": "Spaniolă",
+  "description": "Repetiții SRS pentru vocabular spaniol, cu interfață în română.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f2e8",
+  "theme_color": "#27504d",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
