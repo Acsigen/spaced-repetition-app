@@ -124,7 +124,7 @@ export default function WordsApp() {
     <div class="words-layout">
       <form class="panel word-form" onSubmit={saveWord}>
         <label>
-          Spaniolă
+          <span>Spaniolă</span>
           <input
             value={form.spanish}
             onInput={(event) =>
@@ -134,7 +134,7 @@ export default function WordsApp() {
           />
         </label>
         <label>
-          Română
+          <span>Română</span>
           <input
             value={form.romanian}
             onInput={(event) =>
@@ -144,7 +144,7 @@ export default function WordsApp() {
           />
         </label>
         <label>
-          Exemplu
+          <span>Exemplu</span>
           <textarea
             value={form.example}
             onInput={(event) =>
@@ -153,7 +153,7 @@ export default function WordsApp() {
           />
         </label>
         <label>
-          Notă
+          <span>Notă</span>
           <textarea
             value={form.note}
             onInput={(event) => setForm({ ...form, note: inputValue(event) })}
@@ -161,7 +161,7 @@ export default function WordsApp() {
           />
         </label>
         <label>
-          Etichete
+          <span>Etichete</span>
           <input
             value={form.tags}
             onInput={(event) => setForm({ ...form, tags: inputValue(event) })}
@@ -203,7 +203,7 @@ export default function WordsApp() {
                 (event.currentTarget as HTMLInputElement).checked,
               )}
             />
-            Arhivate
+            <span>Arhivate</span>
           </label>
         </div>
         {error && <p class="error-text">{error}</p>}

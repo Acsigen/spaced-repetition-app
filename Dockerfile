@@ -2,7 +2,7 @@ FROM denoland/deno:2.8.0 AS source
 
 WORKDIR /app
 
-COPY deno.json deno.lock* vite.config.ts ./
+COPY deno.json deno.lock vite.config.ts ./
 COPY client.ts main.ts utils.ts ./
 COPY components ./components
 COPY islands ./islands
@@ -22,13 +22,18 @@ FROM denoland/deno:2.8.0 AS runtime
 
 WORKDIR /app
 
-COPY --from=build /app/deno.json /app/deno.lock* ./
+COPY --from=build /app/deno.json /app/deno.lock ./
 COPY --from=build /app/_fresh ./_fresh
 COPY --from=build /app/static ./static
 
 ENV HOST=0.0.0.0
 ENV PORT=8000
 ENV KV_PATH=/data/spanish-srs.kv
+
+# Create the KV volume mount point owned by the non-root deno user so the
+# server can write the Deno KV database at runtime.
+RUN mkdir -p /data && chown deno:deno /data
+USER deno
 
 VOLUME ["/data"]
 EXPOSE 8000

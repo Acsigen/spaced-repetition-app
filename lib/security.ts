@@ -32,5 +32,7 @@ function requestOrigin(ctx: Context<unknown>): string {
 }
 
 function normalizeOrigin(origin: string): string {
-  return origin.replace(/\/+$/, "");
+  let end = origin.length;
+  while (end > 0 && origin[end - 1] === "/") end--;
+  return origin.slice(0, end);
 }
