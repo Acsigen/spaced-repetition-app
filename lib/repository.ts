@@ -74,7 +74,7 @@ export class SpanishSrsRepository {
       if (query && !matchesWordQuery(word, query)) continue;
       words.push(word);
     }
-    return words.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    return words.toSorted((a, b) => b.createdAt.localeCompare(a.createdAt));
   }
 
   async updateWord(
@@ -114,7 +114,7 @@ export class SpanishSrsRepository {
     }
 
     return due
-      .sort((a, b) => a.card.dueAt.localeCompare(b.card.dueAt))
+      .toSorted((a, b) => a.card.dueAt.localeCompare(b.card.dueAt))
       .slice(0, limit)
       .map(({ card, word }) => toDueReview(card, word));
   }
@@ -221,9 +221,11 @@ export class SpanishSrsRepository {
     return {
       version: 1,
       exportedAt: now.toISOString(),
-      words: words.sort((a, b) => a.createdAt.localeCompare(b.createdAt)),
-      cards: cards.sort((a, b) => a.id.localeCompare(b.id)),
-      reviews: reviews.sort((a, b) => a.reviewedAt.localeCompare(b.reviewedAt)),
+      words: words.toSorted((a, b) => a.createdAt.localeCompare(b.createdAt)),
+      cards: cards.toSorted((a, b) => a.id.localeCompare(b.id)),
+      reviews: reviews.toSorted((a, b) =>
+        a.reviewedAt.localeCompare(b.reviewedAt)
+      ),
     };
   }
 
