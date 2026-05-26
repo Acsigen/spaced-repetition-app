@@ -67,7 +67,9 @@ export default function StatsApp() {
   );
 }
 
-function Metric({ label, value }: { label: string; value: number }) {
+function Metric(
+  { label, value }: Readonly<{ label: string; value: number }>,
+) {
   return (
     <article class="metric-card">
       <span>{label}</span>

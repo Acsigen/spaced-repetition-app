@@ -6,7 +6,7 @@ export const REVIEW_RATINGS = ["again", "hard", "good", "easy"] as const;
 export type ReviewRating = typeof REVIEW_RATINGS[number];
 
 export interface StoredFsrsCard
-  extends Omit<FsrsCardInput, "due" | "last_review"> {
+  extends Omit<FsrsCardInput, "due" | "last_review" | "elapsed_days"> {
   due: string;
   last_review?: string | null;
 }

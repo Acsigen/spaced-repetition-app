@@ -36,7 +36,10 @@ export function scheduleFsrsReview(
   rating: ReviewRating,
   reviewedAt: DateInput = new Date(),
 ): StoredFsrsCard {
-  const result = scheduler.next(card, reviewedAt, mapRatingToFsrs(rating));
+  // ts-fsrs recomputes elapsed_days from last_review internally; the input
+  // value is ignored, so a placeholder satisfies the (deprecated) field.
+  const input: FsrsCardInput = { ...card, elapsed_days: 0 };
+  const result = scheduler.next(input, reviewedAt, mapRatingToFsrs(rating));
   return toStoredFsrsCard(result.card);
 }
 
@@ -47,7 +50,6 @@ export function toStoredFsrsCard(
     due: toIsoDate(card.due, "due"),
     stability: card.stability,
     difficulty: card.difficulty,
-    elapsed_days: card.elapsed_days,
     scheduled_days: card.scheduled_days,
     learning_steps: card.learning_steps,
     reps: card.reps,

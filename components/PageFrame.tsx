@@ -15,7 +15,9 @@ interface PageFrameProps {
   title: string;
 }
 
-export function PageFrame({ active, children, title }: PageFrameProps) {
+export function PageFrame(
+  { active, children, title }: Readonly<PageFrameProps>,
+) {
   return (
     <div class="app-frame">
       <header class="topbar">
